@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+//import {BrowserRouter, Routes, Route, useLocation} from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import 'bootstrap'
+import './style.css'
+import './all.css'
+import MainContainer from "./MainContainer";
+import Sidebar from "./Sidebar";
 
 function App() {
+  const isSmallScreen = window.matchMedia("(max-width: 600px)").matches;
+  
+  const [extend, setExtend] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Sidebar extend = {extend} setExtend = {setExtend} isSmallScreen = {isSmallScreen}/>
+      <MainContainer extend = {extend} setExtend = {setExtend} isSmallScreen = {isSmallScreen}/>
+    </>
   );
 }
 
