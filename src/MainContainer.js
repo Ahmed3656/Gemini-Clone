@@ -92,31 +92,27 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
         }
     }
 
-    /////////////////////////////////////////// light theme style ///////////////////////////////////////////
-
-    const mainStyle = {
-        backgroundColor: '#ffffff'
-    }
     return (
-        <div id="main-container" style={lightTheme?mainStyle:null}>
+        <div id="main-container" className={lightTheme?'main-container':null}>
             <nav>
                 <div className="d-flex">
                     {isSmallScreen ? 
                         (
                             <>
-                                <span className="list-icon" onClick={() => setExtend(!extend)} style={{ marginLeft:'3px' }}>
+                                <span className={`list-icon ${lightTheme?'list-icon-light':null}`} onClick={() => setExtend(!extend)} style={{ marginLeft:'3px' }}>
                                     <i className="fas fa-bars"></i>
                                 </span>
                             </>
                         ) : null}
-                    <div className="gemini-button">
+                    <div className={`gemini-button ${lightTheme?'g-button-light':null}`}>
                         <span className="title"> Gemini </span>
                         <span className="gemini-arrow"></span>
-                </div>
+                    </div>
                 </div>
                 
                 <div className="profile d-flex">
-                    <div className="advanced">
+                    <div className={`advanced ${lightTheme?'advanced-light':null}`}>
+
                         <img src="images/logo-pink.svg" className="logo-pink d-inline pe-2" />
                         <span onClick={()=>window.open(url, '_blank')}> Try Gemini Advanced </span>
                     </div>
@@ -128,7 +124,7 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
             <main>
 
                 {hideMain?
-                <div className="generated-result text-light">
+                <div className={`generated-result ${lightTheme?'generated-result-light':null}`}>
                     <div className="result-title">
                         <img src="images/pfp.jpg" className="pfp" />
                         <p>{current}</p>
@@ -142,13 +138,13 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
                 <>
                     <div>
                         <h2 className="hello">Hello, Developer</h2>
-                        <h2 className="help">How can I help you today?</h2>
+                        <h2 className={`help ${lightTheme?'help-light':null}`}>How can I help you today?</h2>
                     </div>
 
                     <div className="suggestions-container">
                         {suggestions.map((item, index) => (
                             <div key={index}>
-                                <div className="suggestion pt-3 col-12 col-md-2 col-lg-3">
+                                <div className={`suggestion pt-3 ${lightTheme?'suggestion-light':null}`}>
                                     <p>{item.text}</p>
                                     { item.icon }
                                 </div>
@@ -158,7 +154,7 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
                 </>
                 }
 
-                <div className="main-prompt">
+                <div className={`main-prompt ${lightTheme?'main-prompt-light':null}`}>
                     <div><input type="text" ref={userInput} className="prompt-input" placeholder="Enter a prompt here" onChange={(e)=>setInput(e.target.value)} onKeyPress={enterPressed} value={input}/></div>
                     <div className="prompt-icons">
                         <i class="image-icon far fa-image"></i>
@@ -171,7 +167,7 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
                         <span className="popup submit-popup"> Submit </span>
                     </div>
                 </div>
-                <p className="bottom-msg">Gemini may display inaccurate info, including about people, so double-check its responses. <a href="#" className="privacy">Your privacy & Gemini Apps</a></p>
+                <p className={`bottom-msg ${lightTheme?'bottom-msg-light':null}`}>Gemini may display inaccurate info, including about people, so double-check its responses. <a href="#" className="privacy">Your privacy & Gemini Apps</a></p>
             </main>
         </div>
     );

@@ -21,14 +21,14 @@ function Sidebar({extend, setExtend, isSmallScreen, lightTheme, setLightTheme}){
     }
     const url = 'https://myactivity.google.com/myactivity'
     return (
-        <div id="sidebar" className="d-flex flex-column justify-content-between" style={isSmallScreen?(extend?null:sidebarStyle):null}>
+        <div id="sidebar" className={`d-flex flex-column justify-content-between ${lightTheme?'sidebar-light':null}`} style={isSmallScreen?(extend?null:sidebarStyle):null}>
             <div className="chats">
                 <span className="list-icon" onClick={()=>setExtend(!extend)}><i className="fas fa-bars"></i></span>
                 {isSmallScreen?null:extend?<span className="popup menu-popup"> Collapse menu </span>:<span className=" popup menu-popup"> Expand menu </span>}
 
                 <div className="new-chat">
-                    {/* <i className="plus-icon fas fa-plus"></i> */}
-                    <img className="plus-icon" src="images/plus-icon-white.png" draggable="false"/>
+                    {lightTheme?<img className="plus-icon" src="images/plus_icon.png" draggable="false"/>:<img className="plus-icon" src="images/plus-icon-white.png" draggable="false"/>}
+                    {/* <img className="plus-icon" src="images/plus-icon-white.png" draggable="false"/> */}
                     {extend?<span>New Chat</span>:null}
                     <span className="popup chat-popup" style={extend?chatPopup:null}> New chat </span>
                 </div>

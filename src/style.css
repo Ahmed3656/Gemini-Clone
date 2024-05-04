@@ -29,7 +29,7 @@
     min-width: fit-content;
     padding: 25px 15px;
 
-    transition: width 0.2s ease;
+    transition: 0.2s ease;
 }
 
 #main-container {
@@ -269,6 +269,7 @@
 
 .setting {
     padding: 5px;
+    cursor: pointer;
 }
 
 .setting i {
@@ -588,6 +589,8 @@ main {
     height: 63vh;
     padding: 0 5%;
     overflow-y: scroll;
+
+    color: #ffffff;
 }
 
 .generated-result::-webkit-scrollbar {

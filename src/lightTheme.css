@@ -1,0 +1,120 @@
+
+/* ////////////////////////////// sidebar ////////////////////////////// */
+
+.sidebar-light {
+    background-color: #f0f4f9 !important;
+    color: #2e2e2e !important;
+}
+
+.sidebar-light .list-icon {
+    color: #000000;
+}
+
+.sidebar-light .new-chat {
+    background-color: #e6eaf1;
+    padding: 6px 10px;
+}
+
+.sidebar-light .recent-title {
+    color: #000000;
+}
+
+.sidebar-light .hide:hover {
+    background-color: #e6eaf1;
+}
+
+.sidebar-light .settings {
+    background-color: #f0f4f9;
+    box-shadow: #a7a7a7 0px 0px 10px;
+}
+
+.sidebar-light .setting:hover {
+    background-color: #dedfe0 !important;
+}
+
+/* ////////////////////////////// main/nav ////////////////////////////// */
+
+.g-button-light .title {
+    color: #000000;
+}
+
+.g-button-light .gemini-arrow {
+    border-top-color: #000000;
+}
+
+.g-button-light:active {
+    background-color: rgb(235, 233, 233);
+}
+
+.list-icon-light {
+    color: #000000;
+}
+
+.list-icon-light:hover {
+    background-color: #f0f4f9;
+}
+
+.advanced-light {
+    background-color: #dde3ea;
+    color: #000000;
+}
+
+.advanced-light:hover {
+    background-color: #d7dee7;
+}
+
+/* ////////////////////////////// main/main ////////////////////////////// */
+
+.main-container {
+    background-color: #ffffff !important;
+}
+
+.help-light {
+    color: #c4c7c5;
+}
+
+.generated-result-light {
+    color: #000000;
+}
+
+.generated-result-light .result-title p {
+    margin-top: 10px;
+}
+
+.suggestion-light {
+    background-color: #f0f4f9;
+    color: #000000;
+}
+
+.suggestion-light i {
+    background-color: #ffffff;
+}
+
+.suggestion-light:hover {
+    background-color: #dde3ea;
+}
+
+.main-prompt-light .prompt-input {
+    background-color: #f0f4f9;
+    color: #000000;
+}
+
+.main-prompt-light .prompt-input:focus {
+    background-color: #efefef;
+}
+
+.main-prompt-light .prompt-input::placeholder {
+    color: #696969;
+}
+
+.main-prompt-light .prompt-icons i {
+    color: #2e2e2e;
+}
+
+.main-prompt-light .prompt-icons i:hover {
+    background-color: #eaeaea;
+}
+
+.bottom-msg-light, .bottom-msg-light a {
+    color: #000000;
+}
