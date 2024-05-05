@@ -5,6 +5,7 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
     const {sendData, current, hideMain, loading, resultData, setInput, input} = useContext(context)
     
     const [suggestions, setSuggestions] = useState([]);
+    const [showGList, setShowGList] = useState(false)
 
     const allSuggestions = [
         {
@@ -88,8 +89,13 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
 
     const enterPressed = (e)=>{
         if(e.key === 'Enter'){
-            sendData();
+            if(userInput.current.value.trim() !== "")sendData();
         }
+    }
+
+    const saveInput = (text)=>{
+        userInput.current.value = text
+        setInput(text)
     }
 
     return (
@@ -104,10 +110,19 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
                                 </span>
                             </>
                         ) : null}
-                    <div className={`gemini-button ${lightTheme?'g-button-light':null}`}>
+                    <div className={`gemini-button ${lightTheme?'g-button-light':null}`} onClick={()=>setShowGList(!showGList)}>
                         <span className="title"> Gemini </span>
                         <span className="gemini-arrow"></span>
                     </div>
+                    {showGList?
+                    <div className="gemini-list">
+                        <p className="opt1 d-flex justify-content-between"> <span><img className="logo1" src="images/gemini-icon.png" draggable="false" /> Gemini</span> <i class="far fa-check-circle"></i> </p>
+                        <p className="opt2 d-flex justify-content-between"> <span><img className="logo2" src="images/logo-pink.svg" draggable="false" /> Gemini Advanced</span> <button onClick={()=>window.open(url, '_blank')}>Upgrade</button> </p>
+                    </div>
+                    :
+                    null
+                    }
+                    
                 </div>
                 
                 <div className="profile d-flex">
@@ -131,7 +146,16 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
                     </div>
                     <div className="result-data">
                         <img src="images/gemini-icon.png" draggable="false"/>
+                        
+                        {loading?
+                        <div className="loading">
+                            <hr/>
+                            <hr/>
+                            <hr/>
+                        </div>
+                        :
                         <p dangerouslySetInnerHTML={{__html:resultData}}></p>
+                        }
                     </div>
                 </div>
                 :
@@ -143,11 +167,10 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
 
                     <div className="suggestions-container">
                         {suggestions.map((item, index) => (
-                            <div key={index}>
-                                <div className={`suggestion pt-3 ${lightTheme?'suggestion-light':null}`}>
-                                    <p>{item.text}</p>
-                                    { item.icon }
-                                </div>
+               
+                            <div className={`suggestion pt-3 ${lightTheme?'suggestion-light':null}`} onClick={()=>{(userInput.current.value === item.text)? userInput.current.value = "" : saveInput(item.text)}}>
+                                <p>{item.text}</p>
+                                { item.icon }
                             </div>
                         ))}
                     </div>
@@ -163,7 +186,7 @@ function MainContainer({extend, setExtend, isSmallScreen, lightTheme}){
                         <i class="mic-icon fas fa-microphone"></i>
                         <span className="popup mic-popup"> Use microphone </span>
 
-                        <i class="submit-icon fas fa-paper-plane" onClick={()=>sendData()}></i>
+                        <i class="submit-icon fas fa-paper-plane" onClick={()=>{if(userInput.current.value.trim() !== "")sendData()}}></i>
                         <span className="popup submit-popup"> Submit </span>
                     </div>
                 </div>

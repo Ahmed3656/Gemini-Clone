@@ -12,15 +12,55 @@ const ContextProvider = (props)=>{
     const [loading, setLoading] = useState(false)
     const [resultData, setResultData] = useState("")
 
-    const sendData = async (prompt)=>{
-        setResultData("")
-        setLoading(true)
-        setHideMain(true)
-        setCurrent(input)
-        const response = await runChat(input)
-        setResultData(response)
+    const delayText = (idx, nxtWrd)=>{
+        setTimeout(function(){
+            setResultData(prev=>prev+nxtWrd)
+        },(idx/2.5)*15)
+    }
+
+    const newChat = ()=>{
         setLoading(false)
-        setInput("")
+        setHideMain(false)
+    }
+
+    const sendData = async (prompt)=>{
+        if(prompt !== "") {
+            setResultData("")
+            setLoading(true)
+            setHideMain(true)
+
+            let response
+            if(prompt !== undefined){
+                response = await runChat(prompt)
+                setCurrent(prompt)
+            }
+            else {
+                setRecents(prev=>[input, ...prev])
+                setCurrent(input)
+                response = await runChat(input)
+            }
+
+            let responseArr = response.split("**");
+            let handledBold = "";
+            for(let i = 0; i < responseArr.length; i++) {
+                if (i % 2 === 0) {
+                    handledBold += responseArr[i]
+                }
+                else {
+                    handledBold += ("<b>"+responseArr[i]+"</b>")
+                }
+            }
+            let handledBreaks = handledBold.split("*").join("<br/>")
+            let updatedResponse = handledBreaks.replace("##", "")
+                                //handledBreaks.replace("##", "<strong>").replace(/:/, ":</strong>")
+            for(let i = 0; i < updatedResponse.length; i++){
+                const nxtWrd = updatedResponse[i]
+                delayText(i, nxtWrd)
+            }
+            
+            setLoading(false)
+            setInput("")
+        }
     }
 
     const contextValue = {
@@ -34,6 +74,7 @@ const ContextProvider = (props)=>{
         resultData,
         input,
         setInput,
+        newChat,
     }
 
     return (

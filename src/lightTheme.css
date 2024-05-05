@@ -81,6 +81,11 @@
     margin-top: 10px;
 }
 
+.generated-result-light .loading hr {
+    background-color: #f6f7f8;
+    background: linear-gradient(to right, #9ed7ff, #329fff, #9ed7ff);
+}
+
 .suggestion-light {
     background-color: #f0f4f9;
     color: #000000;
