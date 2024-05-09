@@ -32,6 +32,17 @@
     background-color: #dedfe0 !important;
 }
 
+.sidebar-light .help-list {
+    background-color: #ffffff;
+    font-weight: lighter;
+
+    box-shadow: #a7a7a7 0px 3px 10px;
+}
+
+.sidebar-light .help-list p:hover {
+    background-color: #f4f4f4;
+}
+
 /* ////////////////////////////// main/nav ////////////////////////////// */
 
 .g-button-light .title {
@@ -44,6 +55,24 @@
 
 .g-button-light:active {
     background-color: rgb(235, 233, 233);
+}
+
+.main-container .gemini-list {
+    background-color: #E9EEF6;
+    color: #595a5c;
+}
+
+.main-container .gemini-list button {
+    background-color: #f8fafd;
+    color: #454646;
+}
+
+.main-container .gemini-list button:hover {
+    background-color: #e9ebef;
+}
+
+.main-container .gemini-list .opt1:hover {
+    background-color: #e0e0ea;
 }
 
 .list-icon-light {
